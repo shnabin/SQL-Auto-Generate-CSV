@@ -3,11 +3,11 @@ import pandas as pd
 from datetime import datetime, timedelta
 import datetime
 import time
-
+#connection to the MSSQL server
 conn = pyodbc.connect( driver='{SQL Server Native Client 11.0}',server='xyz', database='RW', Trusted_Connection='yes')
 cursor = conn.cursor()
-path = 'G:\\dump\\'
-sql = '''SELECT * FROM weather_data WHERE TimeCol BETWEEN ? AND ? ORDER BY LOCALCOL ASC;'''
+path = 'G:\\dump\\'  #path in which the .csv has to be generated
+sql = '''SELECT * FROM weather_data WHERE TimeCol BETWEEN ? AND ? ORDER BY LOCALCOL ASC;''' #Replace the table name & column names
 while 1:
     t_date=datetime.datetime.now().date()
     today_date=pd.to_datetime(t_date)
